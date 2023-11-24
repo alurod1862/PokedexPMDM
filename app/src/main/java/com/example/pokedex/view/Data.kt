@@ -1,4 +1,4 @@
-package com.example.pokedex.logic
+package com.example.pokedex.view
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,7 +28,10 @@ fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String){
                 onClick = { /*TODO*/ }, modifier = Modifier
                     .padding(10.dp)
                     .width(150.dp)
-                    .height(35.dp)
+                    .height(35.dp),
+                    colors = ButtonDefaults.textButtonColors(
+                    containerColor = Color(0xFF96afc3), contentColor = Color.White
+                )
             ) {
                 Text(text = buttonOne, fontSize = 14.sp)
             }
@@ -35,7 +39,10 @@ fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String){
                 onClick = { /*TODO*/ }, modifier = Modifier
                     .padding(10.dp)
                     .width(150.dp)
-                    .height(35.dp)
+                    .height(35.dp),
+                    colors = ButtonDefaults.textButtonColors(
+                    containerColor = Color(0xFFa2312d), contentColor = Color.White
+                )
             ) {
                 Text(text = buttonTwo, fontSize = 14.sp)
             }
@@ -82,7 +89,7 @@ fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String){
     }
 }
 @Composable
-fun DataTypeTwo(weight: Float,height: Float,buttonOne:String){
+fun DataTypeOne(weight: Float,height: Float,buttonOne:String){
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -91,7 +98,10 @@ fun DataTypeTwo(weight: Float,height: Float,buttonOne:String){
                 onClick = { /*TODO*/ }, modifier = Modifier
                     .padding(10.dp)
                     .width(150.dp)
-                    .height(35.dp)
+                    .height(35.dp),
+                colors = ButtonDefaults.textButtonColors(
+                    containerColor = Color(0xFF494B4D), contentColor = Color.White
+                )
             ) {
                 Text(text = buttonOne, fontSize = 14.sp)
             }

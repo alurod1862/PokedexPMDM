@@ -1,4 +1,4 @@
-package com.example.pokedex.logic
+package com.example.pokedex.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
@@ -35,6 +34,8 @@ import com.example.pokedex.R
 fun Pokemon() {
 
     Column {
+
+        Spacer(modifier = Modifier.height(60.dp))
 
         //Imagen pokemon
 
@@ -62,26 +63,21 @@ fun Pokemon() {
 
         //Peso,altura y tipo de pokemon
 
-        /*Row(
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-        ){
-            Button(onClick = { /*TODO*/ }, modifier = Modifier
-                .padding(10.dp)
-                .width(150.dp)
-                .height(35.dp)) {
-                Text(text = "buttonOne",fontSize = 14.sp)
-            }
-        }*/
+        //-----------------------------------------------------------Logica---------------------------------------------------
+
+        //Dependiendo del tipo de pokemon puede ser de un tipo de o de dos
 
         Row(
             modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
-            DataTypeTwo(90.5f,1.7f,"flying","fire")
+            DataTypeTwo(90.5f,1.7f,"Flying","Fire")
             //DataTypeOne(weight = 90.5f,1.7f,"Normal")
         }
 
+        //-----------------------------------------------------------Logica---------------------------------------------------
 
-        Spacer(modifier = Modifier.size(20.dp))
+
+        Spacer(modifier = Modifier.size(10.dp))
 
 
         //Stats
@@ -95,12 +91,11 @@ fun Pokemon() {
 
         //Parte inferiror stats del pokemon
         Column (
-            modifier = Modifier.padding(40.dp),
+            modifier = Modifier.width(500.dp).padding(10.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ){
 
-            //stat(name = "HP", color = 0xFFc34749)
             Row(modifier = Modifier.padding(7.dp)) {
                 Text(text = "HP",fontSize = 14.sp,color = Color.Gray)
                 Spacer(modifier = Modifier

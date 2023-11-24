@@ -1,4 +1,4 @@
-package com.example.pokedex.logic
+package com.example.pokedex.view
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Row
