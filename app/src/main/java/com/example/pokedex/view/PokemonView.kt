@@ -24,12 +24,19 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pokedex.R
+import com.example.pokedex.logic.PokedexViewModel
 import com.example.pokedex.logic.Pokemon
+import com.example.pokedex.logic.PokemonViewModel
+import androidx.compose.runtime.livedata.observeAsState
+
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PokemonView(pokemon: Pokemon) {
+fun PokemonView(pokemonViewModel: PokemonViewModel) {
+
+    val name by pokemonViewModel.pokemonName.observeAsState(initial = "")
+
 
     Column {
 

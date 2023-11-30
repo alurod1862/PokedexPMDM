@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
                     topBar = { MyTopAppBarView() }
                 )
                 {
-                    PokemonView(Pokemon("Charizard", "Flying", "Fire",90.5f,1.7f,0.33f,0.36f,0.73f,0.13f,0.93f))
+                    //PokemonView(Pokemon("Charizard", "Flying", "Fire",90.5f,1.7f,0.33f,0.36f,0.73f,0.13f,0.93f))
 
                 }
 
