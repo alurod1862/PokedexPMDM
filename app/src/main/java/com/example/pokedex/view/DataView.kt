@@ -1,11 +1,11 @@
 package com.example.pokedex.view
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -20,7 +20,9 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String){
     Column(
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+
     ) {
         Row(
         ) {
@@ -50,7 +52,8 @@ fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String){
 
         Row{
             Column(
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
             )  {
                 Text(
                     text = "$weight KG",
@@ -66,8 +69,12 @@ fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String){
                     modifier = Modifier.padding(10.dp)
                 )
             }
+
+            Spacer(modifier = Modifier.width(80.dp))
+
             Column(
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
             )  {
 
                 Text(
@@ -88,65 +95,3 @@ fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String){
 
     }
 }
-@Composable
-fun DataTypeOne(weight: Float,height: Float,buttonOne:String){
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Row{
-            Button(
-                onClick = { /*TODO*/ }, modifier = Modifier
-                    .padding(10.dp)
-                    .width(150.dp)
-                    .height(35.dp),
-                colors = ButtonDefaults.textButtonColors(
-                    containerColor = Color(0xFF494B4D), contentColor = Color.White
-                )
-            ) {
-                Text(text = buttonOne, fontSize = 14.sp)
-            }
-        }
-
-        Row{
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally
-            )  {
-                Text(
-                    text = "$weight KG",
-                    fontSize = 24.sp,
-                    color = Color.White,
-                    modifier = Modifier.padding(10.dp)
-                )
-
-                Text(
-                    text = "Weight",
-                    fontSize = 14.sp,
-                    color = Color.Gray,
-                    modifier = Modifier.padding(10.dp)
-                )
-            }
-
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally
-            )  {
-
-                Text(
-                    text = "$height M",
-                    fontSize = 24.sp,
-                    color = Color.White,
-                    modifier = Modifier.padding(10.dp)
-                )
-
-                Text(
-                    text = "Height",
-                    fontSize = 14.sp,
-                    color = Color.Gray,
-                    modifier = Modifier.padding(10.dp)
-                )
-            }
-        }
-
-    }
-}
-
-

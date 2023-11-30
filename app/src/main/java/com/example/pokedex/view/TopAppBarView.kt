@@ -22,7 +22,7 @@ fun MyTopAppBarView() {
             }
         }, actions = {
             IconButton(onClick = {}) {
-                Icon(Icons.Filled.MoreVert, null, tint = Color.White)
+                Text(text = "#006", color = Color.White)
             }
         }
     )

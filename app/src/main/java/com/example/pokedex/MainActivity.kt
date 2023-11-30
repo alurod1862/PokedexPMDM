@@ -4,16 +4,13 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
-import androidx.compose.material3.TopAppBar
-import androidx.compose.ui.Modifier
+import com.example.pokedex.logic.PokedexViewModel
 import com.example.pokedex.ui.theme.PokedexTheme
 import com.example.pokedex.view.MyTopAppBarView
-import com.example.pokedex.view.Pokemon
+import com.example.pokedex.view.PokemonView
+import com.example.pokedex.logic.Pokemon
 
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -26,7 +23,8 @@ class MainActivity : ComponentActivity() {
                     topBar = { MyTopAppBarView() }
                 )
                 {
-                Pokemon()
+                    PokemonView(Pokemon("Charizard", "Flying", "Fire",90.5f,1.7f,0.33f,0.36f,0.73f,0.13f,0.93f))
+
                 }
 
             }
