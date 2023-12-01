@@ -16,10 +16,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.pokedex.logic.Pokemon
 import com.example.pokedex.logic.PokemonType
+import com.example.pokedex.logic.type1
+import com.example.pokedex.logic.type2
 
 @Composable
-fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String,){
+fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String,pokemon : Pokemon){
+    var color1 = type1(pokemon)
+    var color2 = type2(pokemon)
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
@@ -33,7 +38,7 @@ fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String,){
                     .width(150.dp)
                     .height(35.dp),
                     colors = ButtonDefaults.textButtonColors(
-                    containerColor = PokemonType.NORMAL.color, contentColor = Color.White
+                    containerColor = color1, contentColor = Color.White
                 )
             ) {
                 Text(text = buttonOne, fontSize = 14.sp)
@@ -44,7 +49,7 @@ fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String,){
                     .width(150.dp)
                     .height(35.dp),
                     colors = ButtonDefaults.textButtonColors(
-                    containerColor = PokemonType.NORMAL.color, contentColor = Color.White
+                    containerColor = color2, contentColor = Color.White
                 )
             ) {
                 Text(text = buttonTwo, fontSize = 14.sp)
@@ -98,7 +103,8 @@ fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String,){
 }
 
 @Composable
-fun DataTypeOne(weight: Float,height: Float,buttonOne:String){
+fun DataTypeOne(weight: Float,height: Float,buttonOne:String,pokemon : Pokemon){
+    var color1 = type1(pokemon)
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
@@ -112,7 +118,7 @@ fun DataTypeOne(weight: Float,height: Float,buttonOne:String){
                     .width(150.dp)
                     .height(35.dp),
                 colors = ButtonDefaults.textButtonColors(
-                    containerColor = PokemonType.NORMAL.color, contentColor = Color.White
+                    containerColor = color1, contentColor = Color.White
                 )
             ) {
                 Text(text = buttonOne, fontSize = 14.sp)

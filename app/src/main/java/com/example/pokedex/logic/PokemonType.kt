@@ -27,15 +27,34 @@ enum class PokemonType(val colorInt: Long) {
 }
 
 
-fun type(pokemon: Pokemon) : Color{
-
+fun type1(pokemon: Pokemon): Color {
     var color = PokemonType.NORMAL
 
+    if (pokemon.type1.isNotEmpty()) {
+        // Buscar el tipo en la enum class
+        val pokemonType = PokemonType.values().find { it.name == pokemon.type1.toUpperCase() }
 
-    if(pokemon.type1 == PokemonType.){
-        var color = PokemonType.BUG
+        // Asignar el color correspondiente si se encuentra el tipo
+        if (pokemonType != null) {
+            color = pokemonType
+        }
     }
 
-    return color
+    return color.color
+}
 
+fun type2(pokemon: Pokemon): Color {
+    var color = PokemonType.NORMAL
+
+    if (pokemon.type2?.isNotEmpty() == true) {
+        // Buscar el tipo en la enum class
+        val pokemonType = PokemonType.values().find { it.name == pokemon.type2.toUpperCase() }
+
+        // Asignar el color correspondiente si se encuentra el tipo
+        if (pokemonType != null) {
+            color = pokemonType
+        }
+    }
+
+    return color.color
 }

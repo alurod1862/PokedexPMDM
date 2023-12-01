@@ -28,7 +28,8 @@ import androidx.compose.ui.unit.sp
 import com.example.pokedex.R
 import com.example.pokedex.logic.Pokemon
 import com.example.pokedex.logic.PokemonType
-import com.example.pokedex.logic.type
+import com.example.pokedex.logic.type1
+import com.example.pokedex.logic.type2
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -41,11 +42,13 @@ fun PokemonView(pokemon: Pokemon) {
 
         //Imagen pokemon
 
-        var color = type(pokemon)
+        var color1 = type1(pokemon)
+        var color2 = type2(pokemon)
+
 
         Box(modifier = Modifier
-            .background(color = color)
-            .border(2.dp, color = color, CircleShape)) {
+            .background(color = color1)
+            .border(2.dp, color = color1, CircleShape)) {
             Image(
                 painter = painterResource(id = pokemon.imagen),
                 contentDescription = pokemon.name,
@@ -59,7 +62,7 @@ fun PokemonView(pokemon: Pokemon) {
         //Nombre pokemon
 
         Text(
-            text = "Charizard", color = Color.White, fontSize = 33.sp, modifier = Modifier
+            text = "${pokemon.name}", color = Color.White, fontSize = 33.sp, modifier = Modifier
                 .align(alignment = Alignment.CenterHorizontally)
                 .padding(20.dp)
         )
@@ -75,9 +78,9 @@ fun PokemonView(pokemon: Pokemon) {
             modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
                 if (pokemon.type2 != null){
-                    pokemon.type2?.let { DataTypeTwo(pokemon.weight,pokemon.height,pokemon.type1, it) }
+                    pokemon.type2?.let { DataTypeTwo(pokemon.weight,pokemon.height,pokemon.type1,it,pokemon) }
                 }else{
-                    DataTypeOne(pokemon.weight,pokemon.height,pokemon.type1)
+                    DataTypeOne(pokemon.weight,pokemon.height,pokemon.type1,pokemon)
             }
         }
 

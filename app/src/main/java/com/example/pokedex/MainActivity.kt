@@ -18,15 +18,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PokedexTheme {
-                val pokemon = Pokemon("Charizard", "Flying","Fire",90.5f,1.7f,0.33f,0.36f,0.73f,0.13f,0.93f,"006",R.drawable.crocodile)
+                val pokemon = Pokemon("Charizard", "Flying","Fire",90.5f,1.7f,0.33f,0.36f,0.73f,0.93f,0.93f,"006",R.drawable.charizard)
                 Scaffold(
                     topBar = { MyTopAppBarView(pokemon) }
                 )
                 {
                     PokemonView(pokemon)
-
                 }
-
             }
         }
     }
