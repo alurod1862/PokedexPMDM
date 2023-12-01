@@ -14,7 +14,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,19 +26,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pokedex.R
-import com.example.pokedex.logic.PokedexViewModel
 import com.example.pokedex.logic.Pokemon
-import com.example.pokedex.logic.PokemonViewModel
-import androidx.compose.runtime.livedata.observeAsState
-
+import com.example.pokedex.logic.PokemonType
+import com.example.pokedex.logic.type
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PokemonView(pokemonViewModel: PokemonViewModel) {
-
-    val name by pokemonViewModel.pokemonName.observeAsState(initial = "")
-
+fun PokemonView(pokemon: Pokemon) {
 
     Column {
 
@@ -44,12 +41,14 @@ fun PokemonView(pokemonViewModel: PokemonViewModel) {
 
         //Imagen pokemon
 
+        var color = type(pokemon)
+
         Box(modifier = Modifier
-            .background(Color(0xFFf7a060))
-            .border(2.dp, Color(0xFFf7a060), CircleShape)) {
+            .background(color = color)
+            .border(2.dp, color = color, CircleShape)) {
             Image(
-                painter = painterResource(id = R.drawable.charizard),
-                contentDescription = "charizard",
+                painter = painterResource(id = pokemon.imagen),
+                contentDescription = pokemon.name,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -75,7 +74,11 @@ fun PokemonView(pokemonViewModel: PokemonViewModel) {
         Row(
             modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
-            DataTypeTwo(pokemon.weight,pokemon.height,pokemon.type1,pokemon.type2)
+                if (pokemon.type2 != null){
+                    pokemon.type2?.let { DataTypeTwo(pokemon.weight,pokemon.height,pokemon.type1, it) }
+                }else{
+                    DataTypeOne(pokemon.weight,pokemon.height,pokemon.type1)
+            }
         }
 
         //-----------------------------------------------------------Logica---------------------------------------------------
@@ -110,6 +113,5 @@ fun PokemonView(pokemonViewModel: PokemonViewModel) {
         }
     }
 }
-
 
 

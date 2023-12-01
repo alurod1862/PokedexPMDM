@@ -16,9 +16,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.pokedex.logic.PokemonType
 
 @Composable
-fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String){
+fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String,){
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
@@ -32,7 +33,7 @@ fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String){
                     .width(150.dp)
                     .height(35.dp),
                     colors = ButtonDefaults.textButtonColors(
-                    containerColor = Color(0xFF96afc3), contentColor = Color.White
+                    containerColor = PokemonType.NORMAL.color, contentColor = Color.White
                 )
             ) {
                 Text(text = buttonOne, fontSize = 14.sp)
@@ -43,7 +44,7 @@ fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String){
                     .width(150.dp)
                     .height(35.dp),
                     colors = ButtonDefaults.textButtonColors(
-                    containerColor = Color(0xFFa2312d), contentColor = Color.White
+                    containerColor = PokemonType.NORMAL.color, contentColor = Color.White
                 )
             ) {
                 Text(text = buttonTwo, fontSize = 14.sp)
@@ -95,3 +96,72 @@ fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String){
 
     }
 }
+
+@Composable
+fun DataTypeOne(weight: Float,height: Float,buttonOne:String){
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+
+    ) {
+        Row(
+        ) {
+            Button(
+                onClick = { /*TODO*/ }, modifier = Modifier
+                    .padding(10.dp)
+                    .width(150.dp)
+                    .height(35.dp),
+                colors = ButtonDefaults.textButtonColors(
+                    containerColor = PokemonType.NORMAL.color, contentColor = Color.White
+                )
+            ) {
+                Text(text = buttonOne, fontSize = 14.sp)
+            }
+        }
+
+        Row{
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            )  {
+                Text(
+                    text = "$weight KG",
+                    fontSize = 24.sp,
+                    color = Color.White,
+                    modifier = Modifier.padding(10.dp)
+                )
+
+                Text(
+                    text = "Weight",
+                    fontSize = 14.sp,
+                    color = Color.Gray,
+                    modifier = Modifier.padding(10.dp)
+                )
+            }
+
+            Spacer(modifier = Modifier.width(80.dp))
+
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            )  {
+
+                Text(
+                    text = "$height M",
+                    fontSize = 24.sp,
+                    color = Color.White,
+                    modifier = Modifier.padding(10.dp)
+                )
+
+                Text(
+                    text = "Height",
+                    fontSize = 14.sp,
+                    color = Color.Gray,
+                    modifier = Modifier.padding(10.dp)
+                )
+            }
+        }
+
+    }
+}
+

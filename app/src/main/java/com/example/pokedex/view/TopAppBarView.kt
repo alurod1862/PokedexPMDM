@@ -1,5 +1,6 @@
 package com.example.pokedex.view
 
+import androidx.compose.foundation.background
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.MoreVert
@@ -9,11 +10,15 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.example.pokedex.logic.Pokemon
+import com.example.pokedex.logic.PokemonType
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyTopAppBarView() {
+fun MyTopAppBarView(pokemon: Pokemon) {
+    val numPok = pokemon.numPokemon
     TopAppBar(
         title = { Text(text = "Pokedex", color = Color.White) },
         navigationIcon = {
@@ -22,7 +27,7 @@ fun MyTopAppBarView() {
             }
         }, actions = {
             IconButton(onClick = {}) {
-                Text(text = "#006", color = Color.White)
+                Text(text = "#$numPok", color = Color.White)
             }
         }
     )
