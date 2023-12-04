@@ -1,5 +1,7 @@
 package com.example.pokedex.logic
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 
 class Pokemon(
@@ -14,10 +16,14 @@ class Pokemon(
     val statSPD: Float=0.0f,
     val statEXP: Float=0.0f,
     val numPokemon: String = "",
-    val imagen:Int = 0,
+    val imagen:String = "",
+    val id:Int = 0
 )
 
-class PokedexViewModel : ViewModel() {
+class PokedexViewModel(application: Application) : AndroidViewModel(application) {
+
+
+
 
 
 

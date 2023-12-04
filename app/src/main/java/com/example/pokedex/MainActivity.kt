@@ -10,6 +10,7 @@ import com.example.pokedex.ui.theme.PokedexTheme
 import com.example.pokedex.view.MyTopAppBarView
 import com.example.pokedex.view.PokemonView
 import com.example.pokedex.logic.Pokemon
+import com.google.gson.Gson
 
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
