@@ -18,6 +18,8 @@ class PokemonDeserializer : JsonDeserializer<Pokemon> {
 
         val height = json.get("height").asFloat
 
+        val weight = json.get("weight").asFloat
+
         val id = json.get("id").asInt
 
         val sprite = json.get("sprite").asJsonObject
@@ -31,20 +33,39 @@ class PokemonDeserializer : JsonDeserializer<Pokemon> {
         var statSPD: Float=0.0f
         var statEXP: Float=0.0f
 
-        val statsA = json.get("stats").asJsonArray
-        statsA.forEach{
+        val stats = json.get("stats").asJsonArray
+        stats.forEach{
             val actualStat = it.asJsonObject.get("stat")
+            val statName = actualStat.asJsonObject.get("name").asString
+            val baseStat = it.asJsonObject.get("base_stat").asFloat
 
-            when (actualStat.asJsonObject.get("name").asString){
-                "hp" -> statHP = it.asJsonObject.get("base_stat").asFloat
+            when (statName) {
+                "hp" -> statHP = baseStat
+                "atk" -> statATK = baseStat
+                "def" -> statDEF = baseStat
+                "spd" -> statSPD = baseStat
+                "exp" -> statEXP = baseStat
             }
+        }
 
+
+        var type1:String = ""
+        var type2:String? = ""
+
+        val types =  json.get("types").asJsonArray
+        types.forEach{
+            val actualType = it.asJsonObject.get("type")
+            val typeName = actualType.asJsonObject.get("name").asString
+            val slot = it.asJsonObject.get("slot").asInt
+
+            when(slot){
+                1 -> type1 = typeName
+                2 -> type2 = typeName
+            }
 
         }
 
-        return Pokemon(name, height = height,id = id, imagen = imagen)
-
-
+        return Pokemon(name, height = height, weight = weight,id = id, imagen = imagen, type1 = type1, type2 = type2, statATK = statATK, statDEF = statDEF, statHP = statHP, statEXP = statEXP, statSPD = statSPD)
     }
 
 
