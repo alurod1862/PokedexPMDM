@@ -50,7 +50,7 @@ fun PokemonView(pokemon: Pokemon) {
             .background(color = color1)
             .border(2.dp, color = color1, CircleShape)) {
             Image(
-                painter = painterResource(id = pokemon.imagen),
+                painter = painterResource(id = R.drawable.charizard),
                 contentDescription = pokemon.name,
                 modifier = Modifier
                     .fillMaxWidth()

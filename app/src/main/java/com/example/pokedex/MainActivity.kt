@@ -6,6 +6,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
+import androidx.lifecycle.ViewModelProvider
+import com.example.pokedex.logic.PokedexViewModel
 import com.example.pokedex.ui.theme.PokedexTheme
 import com.example.pokedex.view.MyTopAppBarView
 import com.example.pokedex.view.PokemonView
@@ -19,13 +21,16 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PokedexTheme {
-                //val pokemon = Pokemon("Charizard", "Flying","Fire",90.5f,1.7f,0.33f,0.36f,0.73f,0.93f,0.93f,"006",R.drawable.charizard)
+                val pokemon = Pokemon("prueba","prueba","prueba",90.5f,2f,1f,1f,1f,1f,1f,"001","R.drawable.charizrd",1)
+                val pokedexViewModel = ViewModelProvider(this)[PokedexViewModel::class.java]
                 Scaffold(
-                    topBar = { MyTopAppBarView(pokemon) }
+                    //topBar = { MyTopAppBarView(pokedexViewModel.loadPokemon(pokemonNmae = "ditto"))}
+                    //topBar = { MyTopAppBarView(pokemon) }
+
                 )
                 {
+                    PokemonView(pokedexViewModel.loadPokemon(pokemonNmae = "ditto"))
                     //PokemonView(pokemon)
-                    val pokedexViewModel
                 }
             }
         }

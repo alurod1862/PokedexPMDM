@@ -5,6 +5,8 @@ import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -30,12 +32,19 @@ class Pokemon(
 
 class PokedexViewModel(application: Application) : AndroidViewModel(application) {
 
+
+    private val _pokemonLiveData = MutableLiveData<Pokemon>()
+    val pokemonLiveData: LiveData<Pokemon> get() = _pokemonLiveData
+
+
     @Composable
-    fun prueba(){
+    fun loadPokemon(pokemonNmae :String):Pokemon{
         val appContext = LocalContext.current
         val gson = GsonBuilder().registerTypeAdapter(Pokemon::class.java,PokemonDeserializer()).create()
-        val pokemon = gson.fromJson<Pokemon>(getPokemon(appContext,"charizard"),Pokemon::class.java)
+        val pokemon = gson.fromJson<Pokemon>(getPokemon(appContext,pokemonNmae),Pokemon::class.java)
         println(pokemon.name)
+        _pokemonLiveData.value = pokemon
+        return pokemon
     }
 
    fun getPokemon(context : Context,pokemonName:String):String?{
