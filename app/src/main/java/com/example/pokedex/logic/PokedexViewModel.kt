@@ -1,8 +1,10 @@
 package com.example.pokedex.logic
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -35,16 +37,19 @@ class PokedexViewModel(application: Application) : AndroidViewModel(application)
 
     private val _pokemonLiveData = MutableLiveData<Pokemon>()
     val pokemonLiveData: LiveData<Pokemon> get() = _pokemonLiveData
+    val appContext = getApplication<Application>().applicationContext
 
 
-    @Composable
-    fun loadPokemon(pokemonNmae :String):Pokemon{
-        val appContext = LocalContext.current
+    init {
+        loadPokemon(pokemonName = "charizard.json")
+    }
+
+
+    private fun loadPokemon(pokemonName :String){
         val gson = GsonBuilder().registerTypeAdapter(Pokemon::class.java,PokemonDeserializer()).create()
-        val pokemon = gson.fromJson<Pokemon>(getPokemon(appContext,pokemonNmae),Pokemon::class.java)
-        println(pokemon.name)
+        val pokemon = gson.fromJson(getPokemon(appContext,pokemonName),Pokemon::class.java)
+        println(_pokemonLiveData.value?.name)
         _pokemonLiveData.value = pokemon
-        return pokemon
     }
 
    fun getPokemon(context : Context,pokemonName:String):String?{

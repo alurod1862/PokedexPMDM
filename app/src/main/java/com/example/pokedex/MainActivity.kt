@@ -1,6 +1,7 @@
 package com.example.pokedex
 
 import android.annotation.SuppressLint
+import android.app.Application
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -21,16 +22,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PokedexTheme {
-                val pokemon = Pokemon("prueba","prueba","prueba",90.5f,2f,1f,1f,1f,1f,1f,"001","R.drawable.charizrd",1)
-                val pokedexViewModel = ViewModelProvider(this)[PokedexViewModel::class.java]
+                val pokemonViewModel = PokedexViewModel(application)
                 Scaffold(
-                    //topBar = { MyTopAppBarView(pokedexViewModel.loadPokemon(pokemonNmae = "ditto"))}
-                    //topBar = { MyTopAppBarView(pokemon) }
-
+                    topBar = { MyTopAppBarView(pokemonViewModel)}
                 )
                 {
-                    PokemonView(pokedexViewModel.loadPokemon(pokemonNmae = "ditto"))
-                    //PokemonView(pokemon)
+                    PokemonView(pokemonViewModel)
                 }
             }
         }

@@ -22,10 +22,10 @@ class PokemonDeserializer : JsonDeserializer<Pokemon> {
 
         val id = json.get("id").asInt
 
-        val sprite = json.get("sprite").asJsonObject
+        val sprite = json.get("sprites").asJsonObject
         val other = sprite.get("other").asJsonObject
         val officialArtwork = other.get("official-artwork").asJsonObject
-        val imagen = officialArtwork.get("front-default").asString
+        val imagen = officialArtwork.get("front_default").asString
 
         var statHP: Float=0.0f
         var statATK: Float=0.0f

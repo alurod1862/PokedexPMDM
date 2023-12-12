@@ -19,6 +19,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -26,6 +28,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pokedex.R
+import com.example.pokedex.logic.PokedexViewModel
 import com.example.pokedex.logic.Pokemon
 import com.example.pokedex.logic.PokemonType
 import com.example.pokedex.logic.type1
@@ -34,7 +37,11 @@ import com.example.pokedex.logic.type2
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PokemonView(pokemon: Pokemon) {
+fun PokemonView(pokedexViewModel: PokedexViewModel) {
+
+
+    val pokemon by pokedexViewModel.pokemonLiveData.observeAsState(initial = Pokemon())
+
 
     Column {
 

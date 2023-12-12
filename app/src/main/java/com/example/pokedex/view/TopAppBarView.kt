@@ -10,14 +10,19 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.example.pokedex.logic.PokedexViewModel
 import com.example.pokedex.logic.Pokemon
 import com.example.pokedex.logic.PokemonType
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyTopAppBarView(pokemon: Pokemon) {
+fun MyTopAppBarView(pokedexViewModel: PokedexViewModel) {
+    val pokemon by pokedexViewModel.pokemonLiveData.observeAsState(initial = Pokemon())
+
     val numPok = pokemon.numPokemon
     TopAppBar(
         title = { Text(text = "Pokedex", color = Color.White) },
