@@ -19,8 +19,8 @@ class Pokemon(
     val name: String="",
     val type1: String="",
     val type2: String? = null,
-    val weight: Float=0.0f,
-    val height: Float=0.0f,
+    val weight: Float=0f,
+    val height: Float=0f,
     val statHP: Float=0.0f,
     val statATK: Float=0.0f,
     val statDEF: Float=0.0f,
@@ -41,7 +41,7 @@ class PokedexViewModel(application: Application) : AndroidViewModel(application)
 
 
     init {
-        loadPokemon(pokemonName = "charizard.json")
+        loadPokemon(pokemonName = "druddigon.json")
     }
 
 
