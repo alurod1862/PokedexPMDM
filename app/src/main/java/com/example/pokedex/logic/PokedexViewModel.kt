@@ -42,7 +42,7 @@ class PokedexViewModel(application: Application) : AndroidViewModel(application)
 
 
     init {
-        loadPokemon(pokemonName = "druddigon.json")
+        loadPokemon(pokemonName = "zekrom.json")
     }
 
 
