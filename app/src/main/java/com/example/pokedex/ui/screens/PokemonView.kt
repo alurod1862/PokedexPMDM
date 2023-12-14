@@ -22,6 +22,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
@@ -70,7 +71,7 @@ fun PokemonView(pokedexViewModel: PokedexViewModel) {
         //Nombre pokemon
 
         Text(
-            text = "${pokemon.name}", color = Color.White, fontSize = 33.sp, modifier = Modifier
+            text = "${pokemon.name}".capitalize(), color = Color.White, fontSize = 33.sp, modifier = Modifier
                 .align(alignment = Alignment.CenterHorizontally)
                 .padding(20.dp)
         )

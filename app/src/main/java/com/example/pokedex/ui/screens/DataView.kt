@@ -41,7 +41,7 @@ fun DataTypeTwo(weight: Float, height: Float, buttonOne:String, buttonTwo:String
                     containerColor = color1, contentColor = Color.White
                 )
             ) {
-                Text(text = buttonOne, fontSize = 14.sp)
+                Text(text = buttonOne.uppercase(), fontSize = 14.sp)
             }
             Button(
                 onClick = { /*TODO*/ }, modifier = Modifier
@@ -52,7 +52,7 @@ fun DataTypeTwo(weight: Float, height: Float, buttonOne:String, buttonTwo:String
                     containerColor = color2, contentColor = Color.White
                 )
             ) {
-                Text(text = buttonTwo, fontSize = 14.sp)
+                Text(text = buttonTwo.uppercase(), fontSize = 14.sp)
             }
         }
 
@@ -123,7 +123,7 @@ fun DataTypeOne(weight: Float, height: Float, buttonOne:String, pokemon : Pokemo
                     containerColor = color1, contentColor = Color.White
                 )
             ) {
-                Text(text = buttonOne, fontSize = 14.sp)
+                Text(text = buttonOne.uppercase(), fontSize = 14.sp)
             }
         }
 
