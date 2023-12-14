@@ -1,4 +1,4 @@
-package com.example.pokedex.view
+package com.example.pokedex.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -14,9 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -24,25 +22,19 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 import com.example.pokedex.R
-import com.example.pokedex.logic.PokedexViewModel
-import com.example.pokedex.logic.Pokemon
-import com.example.pokedex.logic.PokemonType
-import com.example.pokedex.logic.type1
-import com.example.pokedex.logic.type2
+import com.example.pokedex.ui.viewmodels.PokedexViewModel
+import com.example.pokedex.data.models.Pokemon
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PokemonView(pokedexViewModel: PokedexViewModel) {
 
-
     val pokemon by pokedexViewModel.pokemonLiveData.observeAsState(initial = Pokemon())
-
 
     Column {
 
@@ -50,8 +42,8 @@ fun PokemonView(pokedexViewModel: PokedexViewModel) {
 
         //Imagen pokemon
 
-        var color1 = type1(pokemon)
-        var color2 = type2(pokemon)
+        var color1 = pokedexViewModel.type1(pokemon)
+        var color2 = pokedexViewModel.type2(pokemon)
         val imagen = pokemon.imagen
         val placeholderResource = R.drawable.loading
 
@@ -63,8 +55,8 @@ fun PokemonView(pokedexViewModel: PokedexViewModel) {
                 painter = rememberImagePainter(
                     data = imagen,
                     builder = {
-                        crossfade(true) // Animación de transición al cargar la imagen
-                        placeholder(placeholderResource) // Recurso de carga
+                        crossfade(true)
+                        placeholder(placeholderResource)
                     }
                 ),
                 contentDescription = pokemon.name,
@@ -94,9 +86,9 @@ fun PokemonView(pokedexViewModel: PokedexViewModel) {
             modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
                 if (pokemon.type2 != null){
-                    pokemon.type2?.let { DataTypeTwo(pokemon.weight,pokemon.height,pokemon.type1,it,pokemon) }
+                    pokemon.type2?.let { DataTypeTwo(pokemon.weight,pokemon.height,pokemon.type1,it,pokemon,pokedexViewModel) }
                 }else{
-                    DataTypeOne(pokemon.weight,pokemon.height,pokemon.type1,pokemon)
+                    DataTypeOne(pokemon.weight,pokemon.height,pokemon.type1,pokemon,pokedexViewModel)
             }
         }
 
@@ -128,7 +120,7 @@ fun PokemonView(pokedexViewModel: PokedexViewModel) {
             statGeneric(name = "DEF", color = 0xFF3f8ee1,progressIndicator = pokemon.statDEF/255)
             statGeneric(name = "SPD", color = 0xFF96aec3,progressIndicator = pokemon.statSPD/255)
             statGeneric2(name = "SD", color = 0xFF508a47,progressIndicator = pokemon.statSD/255)
-            statGeneric2(name = "SA", color = 0xFFA0Ba07,progressIndicator = pokemon.statSA/255)
+            statGeneric2(name = "SA", color = 0xFFF7D02C,progressIndicator = pokemon.statSA/255)
         }
     }
 }

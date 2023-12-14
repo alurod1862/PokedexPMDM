@@ -1,4 +1,4 @@
-package com.example.pokedex.view
+package com.example.pokedex.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,17 +16,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.pokedex.logic.Pokemon
-import com.example.pokedex.logic.PokemonType
-import com.example.pokedex.logic.type1
-import com.example.pokedex.logic.type2
+import com.example.pokedex.ui.viewmodels.PokedexViewModel
+import com.example.pokedex.data.models.Pokemon
 
 @Composable
-fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String,pokemon : Pokemon){
-    var color1 = type1(pokemon)
-    var color2 = type2(pokemon)
-    var peso = weight/10
-    var altura = height/10
+fun DataTypeTwo(weight: Float, height: Float, buttonOne:String, buttonTwo:String, pokemon : Pokemon, pokedexViewModel: PokedexViewModel){
+    var color1 = pokedexViewModel.type1(pokemon)
+    var color2 = pokedexViewModel.type2(pokemon)
+    var wiightP = weight/10
+    var heightP = height/10
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
@@ -64,7 +62,7 @@ fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String,po
                 verticalArrangement = Arrangement.Center
             )  {
                 Text(
-                    text = "$peso KG",
+                    text = "$wiightP KG",
                     fontSize = 24.sp,
                     color = Color.White,
                     modifier = Modifier.padding(10.dp)
@@ -86,7 +84,7 @@ fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String,po
             )  {
 
                 Text(
-                    text = "$altura M",
+                    text = "$heightP M",
                     fontSize = 24.sp,
                     color = Color.White,
                     modifier = Modifier.padding(10.dp)
@@ -105,8 +103,10 @@ fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String,po
 }
 
 @Composable
-fun DataTypeOne(weight: Float,height: Float,buttonOne:String,pokemon : Pokemon){
-    var color1 = type1(pokemon)
+fun DataTypeOne(weight: Float, height: Float, buttonOne:String, pokemon : Pokemon, pokedexViewModel: PokedexViewModel){
+    var color1 = pokedexViewModel.type1(pokemon)
+    var wiightP = weight/10
+    var heightP = height/10
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
@@ -133,7 +133,7 @@ fun DataTypeOne(weight: Float,height: Float,buttonOne:String,pokemon : Pokemon){
                 verticalArrangement = Arrangement.Center
             )  {
                 Text(
-                    text = "$weight KG",
+                    text = "$wiightP KG",
                     fontSize = 24.sp,
                     color = Color.White,
                     modifier = Modifier.padding(10.dp)
@@ -155,7 +155,7 @@ fun DataTypeOne(weight: Float,height: Float,buttonOne:String,pokemon : Pokemon){
             )  {
 
                 Text(
-                    text = "$height M",
+                    text = "$heightP M",
                     fontSize = 24.sp,
                     color = Color.White,
                     modifier = Modifier.padding(10.dp)

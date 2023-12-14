@@ -1,4 +1,4 @@
-package com.example.pokedex.view
+package com.example.pokedex.ui.screens
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Row

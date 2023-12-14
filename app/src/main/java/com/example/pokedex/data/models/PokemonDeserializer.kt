@@ -1,16 +1,15 @@
-package com.example.pokedex.logic
+package com.example.pokedex.data.models
 
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import java.lang.reflect.Type
-import java.nio.file.Files.size
 
 
 class PokemonDeserializer : JsonDeserializer<Pokemon> {
 
-    override fun deserialize(json: JsonElement,typeOf:Type,context: JsonDeserializationContext):Pokemon {
+    override fun deserialize(json: JsonElement,typeOf:Type,context: JsonDeserializationContext): Pokemon {
         json as JsonObject
 
 
@@ -52,7 +51,7 @@ class PokemonDeserializer : JsonDeserializer<Pokemon> {
 
 
         var type1:String = ""
-        var type2:String? = ""
+        var type2:String? = null
 
         val types =  json.get("types").asJsonArray
         types.forEach{
