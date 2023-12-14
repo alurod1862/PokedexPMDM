@@ -25,8 +25,9 @@ class Pokemon(
     val statATK: Float=0.0f,
     val statDEF: Float=0.0f,
     val statSPD: Float=0.0f,
+    val statSD: Float=0.0f,
+    val statSA: Float=0.0f,
     val statEXP: Float=0.0f,
-    val numPokemon: String = "",
     val imagen:String = "",
     val id:Int = 0
 )

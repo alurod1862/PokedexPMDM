@@ -25,6 +25,8 @@ import com.example.pokedex.logic.type2
 fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String,pokemon : Pokemon){
     var color1 = type1(pokemon)
     var color2 = type2(pokemon)
+    var peso = weight/10
+    var altura = height/10
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
@@ -62,7 +64,7 @@ fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String,po
                 verticalArrangement = Arrangement.Center
             )  {
                 Text(
-                    text = "$weight KG",
+                    text = "$peso KG",
                     fontSize = 24.sp,
                     color = Color.White,
                     modifier = Modifier.padding(10.dp)
@@ -84,7 +86,7 @@ fun DataTypeTwo(weight: Float,height: Float,buttonOne:String,buttonTwo:String,po
             )  {
 
                 Text(
-                    text = "$height M",
+                    text = "$altura M",
                     fontSize = 24.sp,
                     color = Color.White,
                     modifier = Modifier.padding(10.dp)

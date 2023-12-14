@@ -23,7 +23,7 @@ import com.example.pokedex.logic.PokemonType
 fun MyTopAppBarView(pokedexViewModel: PokedexViewModel) {
     val pokemon by pokedexViewModel.pokemonLiveData.observeAsState(initial = Pokemon())
 
-    val numPok = pokemon.numPokemon
+    val numPok = pokemon.id
     TopAppBar(
         title = { Text(text = "Pokedex", color = Color.White) },
         navigationIcon = {

@@ -31,7 +31,8 @@ class PokemonDeserializer : JsonDeserializer<Pokemon> {
         var statATK: Float=0.0f
         var statDEF: Float=0.0f
         var statSPD: Float=0.0f
-        var statEXP: Float=0.0f
+        var statSD: Float=0.0f
+        var statSA: Float=0.0f
 
         val stats = json.get("stats").asJsonArray
         stats.forEach{
@@ -41,10 +42,11 @@ class PokemonDeserializer : JsonDeserializer<Pokemon> {
 
             when (statName) {
                 "hp" -> statHP = baseStat
-                "atk" -> statATK = baseStat
-                "def" -> statDEF = baseStat
-                "spd" -> statSPD = baseStat
-                "exp" -> statEXP = baseStat
+                "attack" -> statATK = baseStat
+                "defense" -> statDEF = baseStat
+                "speed" -> statSPD = baseStat
+                "special-defense" -> statSD = baseStat
+                "special-attack" -> statSA = baseStat
             }
         }
 
@@ -65,7 +67,7 @@ class PokemonDeserializer : JsonDeserializer<Pokemon> {
 
         }
 
-        return Pokemon(name, height = height, weight = weight,id = id, imagen = imagen, type1 = type1, type2 = type2, statATK = statATK, statDEF = statDEF, statHP = statHP, statEXP = statEXP, statSPD = statSPD)
+        return Pokemon(name, height = height, weight = weight,id = id, imagen = imagen, type1 = type1, type2 = type2, statATK = statATK, statDEF = statDEF, statHP = statHP, statSD = statSD,statSA = statSA, statSPD = statSPD)
     }
 
 

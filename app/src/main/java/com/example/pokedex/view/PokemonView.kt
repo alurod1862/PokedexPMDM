@@ -27,6 +27,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.rememberImagePainter
 import com.example.pokedex.R
 import com.example.pokedex.logic.PokedexViewModel
 import com.example.pokedex.logic.Pokemon
@@ -51,13 +52,21 @@ fun PokemonView(pokedexViewModel: PokedexViewModel) {
 
         var color1 = type1(pokemon)
         var color2 = type2(pokemon)
+        val imagen = pokemon.imagen
+        val placeholderResource = R.drawable.loading
 
 
         Box(modifier = Modifier
             .background(color = color1)
             .border(2.dp, color = color1, CircleShape)) {
             Image(
-                painter = painterResource(id = R.drawable.charizard),
+                painter = rememberImagePainter(
+                    data = imagen,
+                    builder = {
+                        crossfade(true) // Animación de transición al cargar la imagen
+                        placeholder(placeholderResource) // Recurso de carga
+                    }
+                ),
                 contentDescription = pokemon.name,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -114,12 +123,12 @@ fun PokemonView(pokedexViewModel: PokedexViewModel) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ){
-            statHP(name = "HP", color = 0xFFc34749, progressIndicator = pokemon.statHP)
-            statGeneric(name = "ATK", color = 0xFFf1a948,progressIndicator = pokemon.statATK)
-            statGeneric(name = "DEF", color = 0xFF3f8ee1,progressIndicator = pokemon.statDEF)
-            statGeneric(name = "SPD", color = 0xFF96aec3,progressIndicator = pokemon.statSPD)
-            statGeneric(name = "EXP", color = 0xFF508a47,progressIndicator = pokemon.statEXP)
-
+            statGeneric2(name = "HP", color = 0xFFc34749, progressIndicator = pokemon.statHP/255)
+            statGeneric(name = "ATK", color = 0xFFf1a948,progressIndicator = pokemon.statATK/255)
+            statGeneric(name = "DEF", color = 0xFF3f8ee1,progressIndicator = pokemon.statDEF/255)
+            statGeneric(name = "SPD", color = 0xFF96aec3,progressIndicator = pokemon.statSPD/255)
+            statGeneric2(name = "SD", color = 0xFF508a47,progressIndicator = pokemon.statSD/255)
+            statGeneric2(name = "SA", color = 0xFFA0Ba07,progressIndicator = pokemon.statSA/255)
         }
     }
 }

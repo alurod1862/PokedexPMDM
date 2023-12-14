@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.sp
     }
 
 @Composable
-fun statHP(name: String,color: Long,progressIndicator:Float){
+fun statGeneric2(name: String,color: Long,progressIndicator:Float){
     Row(modifier = Modifier.padding(7.dp)) {
         Text(text = name,fontSize = 14.sp,color = Color.Gray)
         Spacer(modifier = Modifier
