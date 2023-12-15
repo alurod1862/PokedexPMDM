@@ -68,6 +68,4 @@ class PokemonDeserializer : JsonDeserializer<Pokemon> {
 
         return Pokemon(name, height = height, weight = weight,id = id, imagen = imagen, type1 = type1, type2 = type2, statATK = statATK, statDEF = statDEF, statHP = statHP, statSD = statSD,statSA = statSA, statSPD = statSPD)
     }
-
-
 }

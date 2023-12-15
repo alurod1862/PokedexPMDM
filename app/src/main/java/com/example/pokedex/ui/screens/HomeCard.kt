@@ -21,18 +21,21 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.pokedex.data.api.RetrofitClient
 import com.example.pokedex.ui.viewmodels.PokedexViewModel
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HomeCard(navComposable: NavController){
 
-    var pokeName:String = ""
 
-    LaunchedEffect(key1 = Unit) {
-        val pokemon = RetrofitClient.pokemonApiService.getPokemonInfo("pikachu")
-        pokeName = pokemon.name
-    }
+    //Lo siguiente hace que pete
+
+    /*LaunchedEffect(key1 = Unit) {
+        val pokeName = RetrofitClient.pokemonApiService.getPokemonInfo("pikachu")
+    }*/
+
 
 
     val items2 = listOf(
@@ -41,19 +44,17 @@ fun HomeCard(navComposable: NavController){
         "pokememon 4",
         "pokememon 5"
     )
-//items2.get(index)
     Column {
 
         LazyVerticalStaggeredGrid(columns = StaggeredGridCells.Fixed(2)){
             items(items2.size) { index ->
-                CardPokemon(pokeName)
+                CardPokemon(items2.get(index))
             }
         }
     }
-
-
-
 }
+
+
 
 @Composable
 fun CardPokemon(pokemonName :String) {
