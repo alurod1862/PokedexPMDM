@@ -21,7 +21,7 @@ class PokedexViewModel(application: Application) : AndroidViewModel(application)
 
 
     init {
-        loadPokemon(pokemonName = pokemonName("charizard"))
+        loadPokemon(pokemonName = pokemonName("arcanine"))
     }
 
 
