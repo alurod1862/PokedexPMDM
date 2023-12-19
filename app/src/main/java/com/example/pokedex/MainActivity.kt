@@ -25,10 +25,10 @@ class MainActivity : ComponentActivity() {
                 val pokemonViewModel = PokedexViewModel(application)
                 val navController = rememberNavController()
                 Scaffold(
-                    //topBar = { MyTopAppBarView(pokemonViewModel) }
+                    topBar = { MyTopAppBarView(pokemonViewModel) }
                 )
                 {
-                    NavHost(navController = navController, startDestination = "homeCard"){
+                    NavHost(navController = navController, startDestination = "pokemonViewModel"){
                         composable("homeCard"){ HomeCard(navController)}
                         composable("pokemonViewModel"){PokemonView(pokemonViewModel) }
                     }
