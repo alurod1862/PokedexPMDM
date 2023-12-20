@@ -39,15 +39,13 @@ class PokedexViewModel(application: Application) : AndroidViewModel(application)
                 _pokemonLiveData.value = pokemon
             } catch (e: Exception) {
                 e.printStackTrace()
-                // Manejar el error aquí
             }
         }
     }
 
 
     private fun loadPokemon(pokemonName: String) {
-        val gson =
-            GsonBuilder().registerTypeAdapter(Pokemon::class.java, PokemonDeserializer()).create()
+        val gson = GsonBuilder().registerTypeAdapter(Pokemon::class.java, PokemonDeserializer()).create()
         val pokemon = gson.fromJson(getPokemon(appContext, pokemonName), Pokemon::class.java)
         println(_pokemonLiveData.value?.name)
         _pokemonLiveData.value = pokemon
