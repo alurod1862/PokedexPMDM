@@ -12,6 +12,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.pokedex.ui.viewmodels.PokedexViewModel
 import com.example.pokedex.ui.theme.PokedexTheme
 import com.example.pokedex.ui.components.MyTopAppBarView
+import com.example.pokedex.ui.screens.HomeCard
 import com.example.pokedex.ui.screens.PokemonView
 
 class MainActivity : ComponentActivity() {
@@ -27,11 +28,13 @@ class MainActivity : ComponentActivity() {
                     topBar = { MyTopAppBarView(pokemonViewModel) }
                 )
                 {
-                    PokemonView(pokemonViewModel)
+                    NavHost(navController = navController, startDestination = "homeCard") {
+                        composable("homeCard") { HomeCard(navController,pokemonViewModel) }
+                        composable("pokemonViewModel") { PokemonView(pokemonViewModel) }
                     }
                 }
             }
         }
     }
-
+}
 
