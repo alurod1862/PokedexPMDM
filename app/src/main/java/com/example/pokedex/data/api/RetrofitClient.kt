@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
     private val retrofit = Retrofit.Builder()
-        .baseUrl("https://pokeapi.co/api/v2/")
+        .baseUrl("https://pokeapi.co/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

@@ -12,7 +12,6 @@ class PokemonDeserializer : JsonDeserializer<Pokemon> {
     override fun deserialize(json: JsonElement,typeOf:Type,context: JsonDeserializationContext): Pokemon {
         json as JsonObject
 
-        println("Respuesta del servidor: $json")
 
         val name = json.get("name").asString
 
