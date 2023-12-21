@@ -16,7 +16,7 @@ class PokemonDeserializer : JsonDeserializer<Pokemon> {
 
         val name = json.get("name").asString
 
-        val height = json.get("heigt").asFloat
+        val height = json.get("height").asFloat
 
         val weight = json.get("weight").asFloat
 
